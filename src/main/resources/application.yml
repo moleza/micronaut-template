@@ -1,0 +1,35 @@
+micronaut:
+    server:
+        cors:
+            enabled: true
+    application:
+        name: demo
+    security:
+        reject-not-found: true
+        enabled: true
+        authentication: bearer
+        token:
+            jwt:
+                # generator:
+                #     refresh-token:
+                #         secret: "ChangeThisSecret"
+                signatures:
+                    secret:
+                        generator:
+                            secret: "ChangeThisSecret"
+                            jws-algorithm: HS256
+
+# JSON Dates
+jackson:
+    serialization:
+        writeDatesAsTimestamps: false
+
+# Datasource
+datasources:
+    default:
+        url: "jdbc:mysql://localhost:3306/demo"
+        driverClassName: com.mysql.cj.jdbc.Driver
+        username: demo
+        password: demo
+        schema-generate: CREATE
+        dialect: MYSQL
